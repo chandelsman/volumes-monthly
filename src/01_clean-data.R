@@ -131,7 +131,7 @@ grp_long <-
       cl_name == "SURG (NCMC)" ~ "North Colorado Medical Center",
       cl_name == "SURG (HS)" ~ "Melissa Memorial Hospital",
       cl_name == "SURG (PROFESSIONAL)" ~ "Summit Outreach",
-      cl_name == "Process/Tech-MHS" ~ cl_name,
+      cl_name == "Process/Tech-MHS" ~ "MHS",
       cl_name == "SURG (OCH)" ~ "Ogallala Community Hospital",
       cl_name == "SURG (IMH)" ~ "Ivinson Memorial Hospital",
       cl_name == "TECH ONLY FR DERM" ~ "Summit Outreach",
