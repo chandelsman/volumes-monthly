@@ -18,7 +18,7 @@ volumes %>%
     labels = volumes$mth
   ) +
   labs(
-    title = "Banner Facilities: 2016 - 2020",
+    title = paste0("Banner Facilities: 2016 - ", year(Sys.Date())),
     x = "", 
     y = "Number of Cases Signed Out", 
     color = "Year"
@@ -32,7 +32,16 @@ volumes %>%
   #       strip.text.x = element_text(margin = margin(2, 0, 2, 0)),
   #       text = element_text(size = 16)) + 
   scale_color_brewer(palette = "Paired")
-ggsave(filename = "output/banner_all.pdf",
+
+# Save PDF of plot
+ggsave(filename = 
+         here("output", 
+              paste0(
+                "All_Banner_2016-",
+                year(Sys.Date()),
+                ".pdf"
+                )
+              ),
        height = 20, width = 20, units = "in", dpi = 500)
 
 # Banner facilities (top 3 only)
@@ -60,7 +69,7 @@ volumes %>%
     scales = "free_y"
   ) +
   labs(
-    title = "Banner Facilities: 2016 - 2020",
+    title = paste0("Banner Facilities: 2016 - ", year(Sys.Date())),
     x = "", 
     y = "Number of Cases Signed Out", 
     color = "Year"
@@ -74,9 +83,18 @@ volumes %>%
   #       strip.text.x = element_text(margin = margin(2, 0, 2, 0)),
   #       text = element_text(size = 16)) + 
   scale_color_brewer(palette = "Paired")
-ggsave(filename = "output/banner_top-3.pdf",
+
+# Save PDF of Banner top 3 facilities
+ggsave(filename = 
+         here("output", 
+              paste0(
+                "Top3_Banner_2016-",
+                year(Sys.Date()),
+                ".pdf"
+                )
+              ), 
        height = 20, width = 30, units = "in", dpi = 500)
- 
+
 # Banner facilities
 volumes %>% 
   filter(cl_grp == "Banner Hospitals") %>%
@@ -99,7 +117,7 @@ volumes %>%
     scales = "free_y"
   ) +
   labs(
-    title = "Banner Facilities: 2016 - 2020",
+    title = paste0("Banner Facilities: 2016 - ", year(Sys.Date())),
     x = "", 
     y = "Number of Cases Signed Out", 
     color = "Year"
@@ -113,5 +131,17 @@ volumes %>%
   #       strip.text.x = element_text(margin = margin(2, 0, 2, 0)),
   #       text = element_text(size = 16)) + 
   scale_color_brewer(palette = "Paired")
+
+# Save PDF of Banner facilities
+ggsave(filename = 
+         here("output", 
+              paste0(
+                "Facilities_Banner_2016-",
+                year(Sys.Date()),
+                ".pdf"
+                )
+              ), 
+       height = 20, width = 30, units = "in", dpi = 500)
+
 ggsave(filename = "output/banner_facilities.pdf",
        height = 20, width = 30, units = "in", dpi = 500)

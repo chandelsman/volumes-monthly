@@ -4,26 +4,22 @@
 
 library(tidyverse)
 library(lubridate)
-
+library(here)
 
 # Load raw data -----------------------------------------------------------
 
 volumes_raw <- 
-  readxl::read_excel("data/volumes_raw.xlsx", sheet = "Report")
+  readxl::read_excel(here("data", "volumes_2016.01.01-2021.10.31.xls"))
 
 # Drop totals row (last row)
-# volumes_raw <- volumes_raw[-nrow(volumes_raw), ]
+volumes_raw <- volumes_raw[-nrow(volumes_raw), ]
 
 # Load group assignments
 grp <- 
-  readxl::read_excel("data/hospital_groups.xlsx", sheet = "Sheet1")
-
-
+  readxl::read_excel(here("data", "hospital_groups.xlsx"), sheet = "Sheet1")
 
 # Format data -------------------------------------------------------------
-
 # Pivot data to long format
-
 # volumes
 vol_long <- 
   volumes_raw %>% 

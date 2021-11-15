@@ -13,7 +13,7 @@ ggplot(by_year, aes(x = factor(yr), y = n, fill = yr)) +
              scales = "free",
              nrow = 2) +
   labs(
-    title = "Annual Volumes Q1-Q3: 2016 - 2020",
+    title = paste0("Annual Volumes Q1-Q3: 2016 - ", year(Sys.Date())),
     x = "", 
     y = "Number of Cases Signed Out"
   ) + 
@@ -26,6 +26,15 @@ ggplot(by_year, aes(x = factor(yr), y = n, fill = yr)) +
   #       strip.text = element_text(size = 12),
   #       strip.text.x = element_text(margin = margin(2, 0, 2, 0)),
   #       text = element_text(size = 16))
-  
-ggsave(filename = "output/annual_q1-q3.pdf",
+
+# Save PDF of plot
+ggsave(filename = 
+         here("output", 
+              paste0(
+                "Annual_2016-", 
+                year(Sys.Date()), 
+                ".pdf"
+                )
+              ),
        height = 20, width = 30, units = "in", dpi = 500)
+       

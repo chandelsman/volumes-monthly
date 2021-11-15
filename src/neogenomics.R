@@ -18,7 +18,7 @@ volumes %>%
     labels = volumes$mth
   ) +
   labs(
-    title = "Neogenomics: 2016 - 2020",
+    title = paste0("Neogenomics: 2016 - ", year(Sys.Date())),
     x = "", 
     y = "Number of Cases Signed Out", 
     color = "Year"
@@ -32,5 +32,14 @@ volumes %>%
   #       strip.text.x = element_text(margin = margin(2, 0, 2, 0)),
   #       text = element_text(size = 16)) + 
   scale_color_brewer(palette = "Paired")
-ggsave(filename = "output/neogenomics.pdf",
+
+# Save PDF of Neogenomics volumes
+ggsave(filename = 
+         here("output", 
+              paste0(
+                "All_Neogenomics_2016-",
+                year(Sys.Date()),
+                ".pdf"
+                )
+              ),
        height = 20, width = 20, units = "in", dpi = 500)

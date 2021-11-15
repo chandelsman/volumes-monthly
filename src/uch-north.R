@@ -18,7 +18,7 @@ volumes %>%
     labels = volumes$mth
   ) +
   labs(
-    title = "UCHealth North Facilities: 2016 - 2020",
+    title = paste0("UCHealth North Facilities: 2016 - ", year(Sys.Date())),
     x = "", 
     y = "Number of Cases Signed Out", 
     color = "Year"
@@ -32,7 +32,16 @@ volumes %>%
   #       strip.text.x = element_text(margin = margin(2, 0, 2, 0)),
   #       text = element_text(size = 16)) + 
   scale_color_brewer(palette = "Paired")
-ggsave(filename = "output/uch-north_all.pdf",
+
+# Save PDF of UCH North volumes
+ggsave(filename = 
+         here("output", 
+              paste0(
+                "All_UCH-North_2016-",
+                year(Sys.Date()),
+                ".pdf"
+                )
+              ),
        height = 20, width = 20, units = "in", dpi = 500)
 
 # UCHealth North hospitals
@@ -57,7 +66,7 @@ volumes %>%
     scales = "free_y"
   ) +
   labs(
-    title = "UCHealth North Facilities: 2016 - 2020",
+    title = paste0("UCHealth North Facilities: 2016 - ", year(Sys.Date())),
     x = "", 
     y = "Number of Cases Signed Out", 
     color = "Year"
@@ -71,5 +80,14 @@ volumes %>%
   #       strip.text.x = element_text(margin = margin(2, 0, 2, 0)),
   #       text = element_text(size = 16)) + 
   scale_color_brewer(palette = "Paired")
-ggsave(filename = "output/uch-north_facilities.pdf",
-       height = 20, width = 30, units = "in", dpi = 500)
+
+# Save #PDF of UCH North volumes by facility
+ggsave(filename = 
+         here("output",
+              paste0(
+                "Facilities_UCH-North_2016-",
+                year(Sys.Date()),
+                ".pdf"
+                )
+              ),
+       height = 20, width = 20, units = "in", dpi = 500)
